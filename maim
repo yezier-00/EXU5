@@ -1,0 +1,78 @@
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class EXU5 {
+
+    public static void main(String[] args) {
+        EXU5 obj =new EXU5();
+        obj.ordenarnumeros();    
+    }//main
+    public void ordenarnumeros() {
+       
+        List <String> Listaordenada= new ArrayList();
+         File archivo = null;
+         FileReader fr = null; 
+         
+         BufferedReader br= null;
+         String[]  palabras=null;
+       // String[]  letras=null;
+        
+        try {                   
+         archivo = new File ("‪C:\\Users\\chinoo\\Desktop\\numeros.txt");
+         fr = new FileReader (archivo);
+         br = new BufferedReader(fr);
+            System.out.println("Numeros del archivo:");
+                     System.out.println("");
+
+         
+        String linea;
+         while((linea=br.readLine())!=null){ 
+             palabras=linea.split(",");
+         }
+           for (String texto:palabras){
+             System.out.print(texto+" ");
+         }
+                       System.out.println("");
+         
+     
+     int [] vectorfinal= new int [palabras.length];       
+     for (int i=0; i<palabras.length; i++){
+         vectorfinal[i]=Integer.parseInt(palabras[i]);      
+   }
+        
+   
+
+  // Metodo borbuja 
+       for(int i=0;i<vectorfinal.length-1;i++){
+           for(int j=0;j<vectorfinal.length-1;j++){
+               if(vectorfinal[j]>vectorfinal[j+1]){
+                  int aux=vectorfinal[j+1];
+                  vectorfinal[j+1]=vectorfinal[j];
+                  vectorfinal[j]=aux;      
+               }
+      }
+      }
+       
+  
+       System.out.println("numeros ordenados:");
+       for(int i=0;i<vectorfinal.length;i++){
+          System.out.print(vectorfinal[i]+" ");
+      } 
+       fr.close();
+
+         }
+         
+           
+      catch(Exception e){
+          System.out.println(e);;
+         
+      }
+          
+        
+    } 
+}//class
